@@ -177,8 +177,8 @@ const Index = () => {
           <span className="w-1 h-6 bg-primary rounded-full" />
           Nossos Serviços
         </h2>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-          {mainSections.slice(0, 5).map((section, idx) => {
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {mainSections.slice(0, 3).map((section, idx) => {
             const Icon = section.icon;
             return (
               <div
@@ -207,7 +207,7 @@ const Index = () => {
             <h3 className="text-sm font-semibold mb-1 text-primary">
               Ver Todos
             </h3>
-            <p className="text-xs text-muted-foreground leading-snug">+9 serviços disponíveis</p>
+            <p className="text-xs text-muted-foreground leading-snug">+11 serviços disponíveis</p>
           </Link>
         </div>
       </section>
