@@ -1,16 +1,19 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, User, Lock, Calendar, Share2 } from "lucide-react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useHasPremiumAccess } from "@/hooks/useSubscription";
 import { Button } from "@/components/ui/button";
+import { UpgradeModal } from "@/components/UpgradeModal";
 
 const NewsDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuth();
   const hasPremium = useHasPremiumAccess();
+  const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
 
   const { data: article } = useQuery({
     queryKey: ['news', id],
@@ -172,6 +175,7 @@ const NewsDetail = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-16">
+      <UpgradeModal open={upgradeModalOpen} onOpenChange={setUpgradeModalOpen} />
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-border shadow-sm">
         <div className="px-3 py-3 flex items-center gap-3">
@@ -201,10 +205,13 @@ const NewsDetail = () => {
               {article.category}
             </span>
             {article.is_premium && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-semibold uppercase bg-primary text-primary-foreground rounded-full">
+              <button
+                onClick={() => setUpgradeModalOpen(true)}
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-semibold uppercase bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-full hover:from-yellow-600 hover:to-amber-700 transition-all active:scale-95"
+              >
                 <Lock className="w-2.5 h-2.5" />
                 Premium
-              </span>
+              </button>
             )}
             <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
               <Calendar className="w-3 h-3" />
