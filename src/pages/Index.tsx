@@ -1,6 +1,8 @@
 import { Home, TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage from "@/assets/hero-agro.jpg";
 import { UserMenu } from "@/components/UserMenu";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,6 +13,21 @@ const Index = () => {
   const { user } = useAuth();
   const hasPremium = useHasPremiumAccess();
   const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
+
+  // Fetch latest news from database
+  const { data: latestNews = [] } = useQuery({
+    queryKey: ['latest-news'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('news')
+        .select('id, title, category, author_name, author_image_url, created_at')
+        .order('created_at', { ascending: false })
+        .limit(3);
+
+      if (error) throw error;
+      return data;
+    },
+  });
   const mainSections = [
     {
       title: "Valoração Rural",
@@ -95,33 +112,6 @@ const Index = () => {
       description: "Banco de dados online",
       icon: Monitor,
       color: "from-indigo-600 to-blue-700",
-    },
-  ];
-
-  const latestNews = [
-    {
-      id: 1,
-      title: "Tecnologia de Precisão Aumenta Produtividade em 40%",
-      category: "Inovação",
-      time: "2h atrás",
-      author: "André Pessôa",
-      authorImage: "/images/authors/andre_pessoa.jpg",
-    },
-    {
-      id: 2,
-      title: "Novos Incentivos para Agricultura Sustentável",
-      category: "Política",
-      time: "5h atrás",
-      author: "Heloisa Melo",
-      authorImage: "/images/authors/heloisa_melo.jpg",
-    },
-    {
-      id: 3,
-      title: "Previsão do Tempo: Chuvas Favoráveis para Próxima Semana",
-      category: "Clima",
-      time: "8h atrás",
-      author: "Rodrigo Cruz",
-      authorImage: "/images/authors/rodrigo_cruz.jpg",
     },
   ];
 
@@ -240,27 +230,35 @@ const Index = () => {
           Últimas Notícias do Agro
         </h2>
         <div className="space-y-2.5">
-          {latestNews.map((news, idx) => (
-            <Link
-              key={idx}
-              to={`/news/${news.id}`}
-              className="block bg-card border border-border rounded-lg p-3 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:border-primary/30 active:scale-[0.98]"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-[0.08em] uppercase bg-primary/10 rounded text-primary">
-                      {news.category}
-                    </span>
-                    <span className="text-[10px] text-muted-foreground font-normal">{news.time}</span>
+          {latestNews.length > 0 ? (
+            latestNews.map((news) => (
+              <Link
+                key={news.id}
+                to={`/news/${news.id}`}
+                className="block bg-card border border-border rounded-lg p-3 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:border-primary/30 active:scale-[0.98]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-[0.08em] uppercase bg-primary/10 rounded text-primary">
+                        {news.category}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground font-normal">
+                        {new Date(news.created_at).toLocaleDateString('pt-BR')}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-bold leading-snug hover:text-primary transition-colors tracking-tight">
+                      {news.title}
+                    </h3>
                   </div>
-                  <h3 className="text-sm font-bold leading-snug hover:text-primary transition-colors tracking-tight">
-                    {news.title}
-                  </h3>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <div className="text-center py-8 text-muted-foreground">
+              <p>Nenhuma notícia encontrada</p>
+            </div>
+          )}
         </div>
         <Link 
           to="/news"
