@@ -93,35 +93,35 @@ const Services = () => {
     <div className="min-h-screen bg-background text-foreground pb-20">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-lg border-b border-border">
-        <div className="px-4 py-4">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+        <div className="px-3 py-3">
+          <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
             Nossos Serviços
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-xs text-muted-foreground mt-0.5">
             Soluções completas para o agronegócio
           </p>
         </div>
       </header>
 
       {/* Services Grid */}
-      <section className="px-4 py-6">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+      <section className="px-3 py-4">
+        <div className="grid grid-cols-2 gap-3">
           {allServices.map((service, idx) => {
             const Icon = service.icon;
             return (
               <div
                 key={idx}
-                className="group bg-card border border-border rounded-xl p-5 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                className="group bg-card border border-border rounded-lg p-4 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-95"
               >
                 <div
-                  className={`w-14 h-14 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <Icon className="w-7 h-7 text-white" />
+                  <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-base font-semibold mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-snug">{service.description}</p>
+                <p className="text-[11px] text-muted-foreground leading-snug">{service.description}</p>
               </div>
             );
           })}
@@ -130,26 +130,26 @@ const Services = () => {
 
       {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border z-50">
-        <div className="flex items-center justify-around py-3 px-2 max-w-md mx-auto">
-          <Link to="/" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+        <div className="flex items-center justify-around py-2.5 px-2 max-w-md mx-auto">
+          <Link to="/" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Home className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Início</span>
+            <span className="text-[9px] font-medium">Início</span>
           </Link>
-          <Link to="/services" className="flex flex-col items-center gap-1 text-primary">
+          <Link to="/services" className="flex flex-col items-center gap-0.5 text-primary active:scale-95">
             <TrendingUp className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Serviços</span>
+            <span className="text-[9px] font-medium">Serviços</span>
           </Link>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Newspaper className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Notícias</span>
+            <span className="text-[9px] font-medium">Notícias</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Video className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Webinars</span>
+            <span className="text-[9px] font-medium">Webinars</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Menu className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Menu</span>
+            <span className="text-[9px] font-medium">Menu</span>
           </button>
         </div>
       </nav>

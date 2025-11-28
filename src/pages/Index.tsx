@@ -126,44 +126,44 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
       {/* Hero Section */}
-      <section className="relative h-[300px] md:h-[400px] overflow-hidden">
+      <section className="relative h-[250px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-10" />
         <img
           src={heroImage}
           alt="Agronegócio de precisão"
           className="w-full h-full object-cover opacity-60"
         />
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center">
-          <div className="inline-block px-4 py-1 mb-4 text-xs font-semibold tracking-wider uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-3 text-center">
+          <div className="inline-block px-3 py-1 mb-3 text-[10px] font-semibold tracking-wider uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
             Inovação + Agro + Tecnologia
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-3 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-3xl font-bold mb-2 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse">
             Agronews
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
+          <p className="text-sm text-muted-foreground max-w-2xl">
             Portal completo para o agronegócio moderno
           </p>
         </div>
       </section>
 
       {/* Highlight Banners */}
-      <section className="px-4 -mt-8 mb-6 relative z-30">
-        <div className="space-y-3">
+      <section className="px-3 -mt-6 mb-4 relative z-30">
+        <div className="space-y-2.5">
           {highlights.map((highlight, idx) => (
             <div
               key={idx}
-              className="bg-gradient-to-r from-card via-muted/50 to-card backdrop-blur-sm border border-border rounded-xl p-4 shadow-lg hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer"
+              className="bg-gradient-to-r from-card via-muted/50 to-card backdrop-blur-sm border border-border rounded-lg p-3 shadow-lg hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer active:scale-[0.98]"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="inline-block px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-primary/20 border border-primary/40 rounded text-primary">
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-primary/20 border border-primary/40 rounded text-primary">
                       {highlight.badge}
                     </span>
-                    <span className="text-xs text-muted-foreground">{highlight.date}</span>
+                    <span className="text-[10px] text-muted-foreground">{highlight.date}</span>
                   </div>
-                  <h3 className="text-base font-semibold mb-0.5">{highlight.title}</h3>
-                  <p className="text-sm text-muted-foreground">{highlight.subtitle}</p>
+                  <h3 className="text-sm font-semibold mb-0.5">{highlight.title}</h3>
+                  <p className="text-xs text-muted-foreground">{highlight.subtitle}</p>
                 </div>
               </div>
             </div>
@@ -172,9 +172,9 @@ const Index = () => {
       </section>
 
       {/* Main Sections Grid */}
-      <section className="px-4 mb-8">
-        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <span className="w-1 h-6 bg-primary rounded-full" />
+      <section className="px-3 mb-6">
+        <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
+          <span className="w-1 h-5 bg-primary rounded-full" />
           Nossos Serviços
         </h2>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -183,56 +183,56 @@ const Index = () => {
             return (
               <div
                 key={idx}
-                className="group bg-card border border-border rounded-xl p-4 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                className="group bg-card border border-border rounded-lg p-3 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-95"
               >
                 <div
-                  className={`w-12 h-12 rounded-lg bg-gradient-to-br ${section.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}
+                  className={`w-11 h-11 rounded-lg bg-gradient-to-br ${section.color} flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <Icon className="w-6 h-6 text-white" />
+                  <Icon className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-sm font-semibold mb-1 group-hover:text-primary transition-colors">
+                <h3 className="text-xs font-semibold mb-1 group-hover:text-primary transition-colors">
                   {section.title}
                 </h3>
-                <p className="text-xs text-muted-foreground leading-snug">{section.description}</p>
+                <p className="text-[11px] text-muted-foreground leading-snug">{section.description}</p>
               </div>
             );
           })}
           <Link
             to="/services"
-            className="group bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-dashed border-primary/30 rounded-xl p-4 hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center text-center"
+            className="group bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-dashed border-primary/30 rounded-lg p-3 hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center text-center active:scale-95"
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-              <TrendingUp className="w-6 h-6 text-white" />
+            <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300">
+              <TrendingUp className="w-5 h-5 text-white" />
             </div>
-            <h3 className="text-sm font-semibold mb-1 text-primary">
+            <h3 className="text-xs font-semibold mb-1 text-primary">
               Ver Todos
             </h3>
-            <p className="text-xs text-muted-foreground leading-snug">+11 serviços disponíveis</p>
+            <p className="text-[11px] text-muted-foreground leading-snug">+11 serviços disponíveis</p>
           </Link>
         </div>
       </section>
 
       {/* Latest News */}
-      <section className="px-4 mb-8">
-        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <span className="w-1 h-6 bg-secondary rounded-full" />
+      <section className="px-3 mb-6">
+        <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
+          <span className="w-1 h-5 bg-secondary rounded-full" />
           Últimas Notícias do Agro
         </h2>
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {latestNews.map((news, idx) => (
             <div
               key={idx}
-              className="bg-card border border-border rounded-xl p-4 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:border-primary/30"
+              className="bg-card border border-border rounded-lg p-3 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:border-primary/30 active:scale-[0.98]"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="inline-block px-2 py-0.5 text-[10px] font-semibold uppercase bg-primary/10 rounded text-primary">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-semibold uppercase bg-primary/10 rounded text-primary">
                       {news.category}
                     </span>
-                    <span className="text-xs text-muted-foreground">{news.time}</span>
+                    <span className="text-[10px] text-muted-foreground">{news.time}</span>
                   </div>
-                  <h3 className="text-sm font-medium leading-snug hover:text-primary transition-colors">
+                  <h3 className="text-xs font-medium leading-snug hover:text-primary transition-colors">
                     {news.title}
                   </h3>
                 </div>
@@ -240,33 +240,33 @@ const Index = () => {
             </div>
           ))}
         </div>
-        <button className="w-full mt-4 py-3 text-sm font-semibold text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-300">
+        <button className="w-full mt-3 py-2.5 text-xs font-semibold text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-300 active:scale-95">
           Ver Todas as Notícias
         </button>
       </section>
 
       {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border z-50">
-        <div className="flex items-center justify-around py-3 px-2 max-w-md mx-auto">
-          <Link to="/" className="flex flex-col items-center gap-1 text-primary">
+        <div className="flex items-center justify-around py-2.5 px-2 max-w-md mx-auto">
+          <Link to="/" className="flex flex-col items-center gap-0.5 text-primary active:scale-95">
             <Home className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Início</span>
+            <span className="text-[9px] font-medium">Início</span>
           </Link>
-          <Link to="/services" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/services" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <TrendingUp className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Serviços</span>
+            <span className="text-[9px] font-medium">Serviços</span>
           </Link>
-          <Link to="/news" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/news" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Newspaper className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Notícias</span>
+            <span className="text-[9px] font-medium">Notícias</span>
           </Link>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Video className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Webinars</span>
+            <span className="text-[9px] font-medium">Webinars</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Menu className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Menu</span>
+            <span className="text-[9px] font-medium">Menu</span>
           </button>
         </div>
       </nav>
