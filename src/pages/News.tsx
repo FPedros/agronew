@@ -1,4 +1,4 @@
-import { Home, TrendingUp, Newspaper, Video, Menu, Filter, Lock } from "lucide-react";
+import { Home, TrendingUp, Newspaper, Video, Menu, Filter, Lock, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -139,6 +139,10 @@ const News = () => {
           <Link to="/services" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <TrendingUp className="w-5 h-5" />
             <span className="text-[9px] font-medium">Serviços</span>
+          </Link>
+          <Link to="/reports" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <FileText className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Relatórios</span>
           </Link>
           <Link to="/news" className="flex flex-col items-center gap-0.5 text-primary active:scale-95">
             <Newspaper className="w-5 h-5" />

@@ -80,6 +80,48 @@ export type Database = {
         }
         Relationships: []
       }
+      reports: {
+        Row: {
+          author_image_url: string
+          author_name: string
+          category: string
+          content: string
+          created_at: string
+          excerpt: string
+          id: string
+          is_premium: boolean
+          published_at: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_image_url: string
+          author_name: string
+          category: string
+          content: string
+          created_at?: string
+          excerpt: string
+          id?: string
+          is_premium?: boolean
+          published_at?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_image_url?: string
+          author_name?: string
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string
+          id?: string
+          is_premium?: boolean
+          published_at?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       services: {
         Row: {
           color_from: string
