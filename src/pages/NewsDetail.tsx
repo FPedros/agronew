@@ -29,8 +29,6 @@ const NewsDetail = () => {
 
   if (!article) return <div>Notícia não encontrada</div>;
 
-  const shouldShowContent = !article.is_premium || hasPremium;
-
   // Fallback mock data para desenvolvimento
   const newsData: Record<string, any> = {
     "1": {
@@ -191,13 +189,8 @@ const NewsDetail = () => {
           <img
             src={article.image_url}
             alt={article.title}
-            className={`w-full h-full object-cover ${!shouldShowContent ? 'opacity-50' : ''}`}
+            className="w-full h-full object-cover"
           />
-          {!shouldShowContent && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-              <Lock className="w-12 h-12 text-white" />
-            </div>
-          )}
         </div>
 
         {/* Content */}
@@ -238,37 +231,11 @@ const NewsDetail = () => {
             Compartilhar
           </button>
 
-          {/* Article Content or Premium Lock */}
-          {!shouldShowContent ? (
-            <div className="bg-muted/50 rounded-lg p-8 text-center my-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                <Lock className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Conteúdo Premium</h3>
-              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                {article.excerpt}
-              </p>
-              <p className="text-muted-foreground mb-6">
-                Esta notícia está disponível apenas para assinantes premium.
-              </p>
-              <div className="space-y-3">
-                {!user ? (
-                  <Button onClick={() => navigate('/auth')} size="lg">
-                    Fazer Login
-                  </Button>
-                ) : (
-                  <Button onClick={() => navigate('/')} size="lg">
-                    Assinar Premium
-                  </Button>
-                )}
-              </div>
-            </div>
-          ) : (
-            <div 
-              className="prose prose-slate max-w-none text-sm leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-            />
-          )}
+          {/* Article Content */}
+          <div 
+            className="prose prose-slate max-w-none text-sm leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
 
           {/* Tags */}
           <div className="mt-6 pt-4 border-t border-border">

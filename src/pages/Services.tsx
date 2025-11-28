@@ -134,13 +134,13 @@ const Services = () => {
                 key={idx}
                 className="group relative bg-card border border-border rounded-lg p-4 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-95"
               >
-                {service.premium && !hasPremium && (
+                {service.premium && (
                   <div className="absolute top-2 right-2 bg-primary text-primary-foreground px-2 py-1 rounded-full flex items-center gap-1 text-xs font-semibold z-10">
                     <Lock className="w-3 h-3" />
                   </div>
                 )}
                 <div
-                  className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300 ${service.premium && !hasPremium ? 'opacity-50' : ''}`}
+                  className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}
                 >
                   <Icon className="w-6 h-6 text-white" />
                 </div>
