@@ -1,4 +1,4 @@
-import { Home, TrendingUp, FileText, Newspaper, Video, Menu } from "lucide-react";
+import { Home, TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor } from "lucide-react";
 import heroImage from "@/assets/hero-agro.jpg";
 
 const Index = () => {
@@ -32,6 +32,60 @@ const Index = () => {
       description: "Conteúdo educacional ao vivo",
       icon: Video,
       color: "from-secondary to-agro-blue",
+    },
+    {
+      title: "AgroTerra",
+      description: "Gestão inteligente de terras",
+      icon: Globe,
+      color: "from-green-600 to-emerald-700",
+    },
+    {
+      title: "AgriContend",
+      description: "Conteúdo técnico especializado",
+      icon: Package,
+      color: "from-blue-600 to-indigo-700",
+    },
+    {
+      title: "AgroMarket",
+      description: "Marketplace do agronegócio",
+      icon: ShoppingCart,
+      color: "from-amber-600 to-orange-600",
+    },
+    {
+      title: "AgroSize",
+      description: "Dimensionamento de projetos",
+      icon: Ruler,
+      color: "from-purple-600 to-violet-700",
+    },
+    {
+      title: "AgroTracker",
+      description: "Rastreamento e monitoramento",
+      icon: MapPin,
+      color: "from-red-600 to-rose-700",
+    },
+    {
+      title: "Agrovalora",
+      description: "Valorização de ativos rurais",
+      icon: DollarSign,
+      color: "from-teal-600 to-cyan-700",
+    },
+    {
+      title: "AgroVip",
+      description: "Serviços premium exclusivos",
+      icon: Award,
+      color: "from-yellow-600 to-amber-700",
+    },
+    {
+      title: "CropData",
+      description: "Dados e análise de safras",
+      icon: Database,
+      color: "from-slate-600 to-gray-700",
+    },
+    {
+      title: "BDonline",
+      description: "Banco de dados online",
+      icon: Monitor,
+      color: "from-indigo-600 to-blue-700",
     },
   ];
 
