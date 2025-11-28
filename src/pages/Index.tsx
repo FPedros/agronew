@@ -134,13 +134,13 @@ const Index = () => {
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-3 text-center">
-          <div className="inline-block px-3 py-1 mb-3 text-[10px] font-semibold tracking-wider uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
+          <div className="inline-block px-3 py-1 mb-3 text-[10px] font-bold tracking-[0.15em] uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
             Inovação + Agro + Tecnologia
           </div>
-          <h1 className="text-3xl font-bold mb-2 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse">
+          <h1 className="text-4xl font-bold mb-2 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse" style={{ letterSpacing: '-0.03em' }}>
             Agronews
           </h1>
-          <p className="text-sm text-muted-foreground max-w-2xl">
+          <p className="text-sm text-muted-foreground max-w-2xl font-normal">
             Portal completo para o agronegócio moderno
           </p>
         </div>
@@ -157,13 +157,13 @@ const Index = () => {
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase bg-primary/20 border border-primary/40 rounded text-primary">
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-[0.1em] uppercase bg-primary/20 border border-primary/40 rounded text-primary">
                       {highlight.badge}
                     </span>
-                    <span className="text-[10px] text-muted-foreground">{highlight.date}</span>
+                    <span className="text-[10px] text-muted-foreground font-normal">{highlight.date}</span>
                   </div>
-                  <h3 className="text-sm font-semibold mb-0.5">{highlight.title}</h3>
-                  <p className="text-xs text-muted-foreground">{highlight.subtitle}</p>
+                  <h3 className="text-sm font-bold mb-0.5 tracking-tight">{highlight.title}</h3>
+                  <p className="text-xs text-muted-foreground font-normal leading-relaxed">{highlight.subtitle}</p>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@ const Index = () => {
 
       {/* Main Sections Grid */}
       <section className="px-3 mb-6">
-        <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
+        <h2 className="text-xl font-bold mb-3 flex items-center gap-2 tracking-tight">
           <span className="w-1 h-5 bg-primary rounded-full" />
           Nossos Serviços
         </h2>
@@ -190,10 +190,10 @@ const Index = () => {
                 >
                   <Icon className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xs font-semibold mb-1 group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-bold mb-1 group-hover:text-primary transition-colors tracking-tight">
                   {section.title}
                 </h3>
-                <p className="text-[11px] text-muted-foreground leading-snug">{section.description}</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed font-normal">{section.description}</p>
               </div>
             );
           })}
@@ -204,17 +204,17 @@ const Index = () => {
             <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300">
               <TrendingUp className="w-5 h-5 text-white" />
             </div>
-            <h3 className="text-xs font-semibold mb-1 text-primary">
+            <h3 className="text-sm font-bold mb-1 text-primary tracking-tight">
               Ver Todos
             </h3>
-            <p className="text-[11px] text-muted-foreground leading-snug">+11 serviços disponíveis</p>
+            <p className="text-[11px] text-muted-foreground leading-relaxed font-normal">+11 serviços disponíveis</p>
           </Link>
         </div>
       </section>
 
       {/* Latest News */}
       <section className="px-3 mb-6">
-        <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
+        <h2 className="text-xl font-bold mb-3 flex items-center gap-2 tracking-tight">
           <span className="w-1 h-5 bg-secondary rounded-full" />
           Últimas Notícias do Agro
         </h2>
@@ -227,12 +227,12 @@ const Index = () => {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="inline-block px-2 py-0.5 text-[9px] font-semibold uppercase bg-primary/10 rounded text-primary">
+                    <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-[0.08em] uppercase bg-primary/10 rounded text-primary">
                       {news.category}
                     </span>
-                    <span className="text-[10px] text-muted-foreground">{news.time}</span>
+                    <span className="text-[10px] text-muted-foreground font-normal">{news.time}</span>
                   </div>
-                  <h3 className="text-xs font-medium leading-snug hover:text-primary transition-colors">
+                  <h3 className="text-sm font-bold leading-snug hover:text-primary transition-colors tracking-tight">
                     {news.title}
                   </h3>
                 </div>

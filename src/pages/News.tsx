@@ -109,10 +109,10 @@ const News = () => {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-lg border-b border-border">
         <div className="px-3 py-3">
-          <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent tracking-tight">
             Agronews
           </h1>
-          <p className="text-xs text-muted-foreground mt-0.5">
+          <p className="text-xs text-muted-foreground mt-0.5 font-normal">
             Últimas notícias do agronegócio
           </p>
         </div>
@@ -124,7 +124,7 @@ const News = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-300 whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide transition-all duration-300 whitespace-nowrap ${
                   selectedCategory === category
                     ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -157,18 +157,18 @@ const News = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className="inline-block px-2 py-0.5 text-[9px] font-semibold uppercase bg-primary/10 rounded text-primary">
+                      <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-[0.08em] uppercase bg-primary/10 rounded text-primary">
                         {news.category}
                       </span>
-                      <span className="text-[10px] text-muted-foreground">{news.time}</span>
+                      <span className="text-[10px] text-muted-foreground font-normal">{news.time}</span>
                     </div>
-                    <h3 className="text-sm font-semibold mb-1.5 line-clamp-2 leading-tight hover:text-primary transition-colors">
+                    <h3 className="text-sm font-bold mb-1.5 line-clamp-2 leading-tight hover:text-primary transition-colors tracking-tight">
                       {news.title}
                     </h3>
-                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-1.5 leading-snug">
+                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-1.5 leading-relaxed font-normal">
                       {news.excerpt}
                     </p>
-                    <span className="text-[10px] text-muted-foreground">Por {news.author}</span>
+                    <span className="text-[10px] text-muted-foreground font-normal">Por {news.author}</span>
                   </div>
                 </div>
               </div>

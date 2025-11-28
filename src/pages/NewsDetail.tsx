@@ -168,7 +168,7 @@ const NewsDetail = () => {
           </div>
 
           {/* Title */}
-          <h1 className="text-xl font-bold mb-4 leading-tight">
+          <h1 className="text-2xl font-bold mb-4 leading-tight tracking-tight">
             {article.title}
           </h1>
 
