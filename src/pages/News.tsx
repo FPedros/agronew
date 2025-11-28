@@ -108,23 +108,23 @@ const News = () => {
     <div className="min-h-screen bg-background text-foreground pb-20">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-lg border-b border-border">
-        <div className="px-4 py-4">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+        <div className="px-3 py-3">
+          <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
             Agronews
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-xs text-muted-foreground mt-0.5">
             Últimas notícias do agronegócio
           </p>
         </div>
 
         {/* Categories */}
-        <div className="px-4 pb-3 overflow-x-auto">
-          <div className="flex gap-2 min-w-max">
+        <div className="px-3 pb-2 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 min-w-max pb-1">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all duration-300 whitespace-nowrap ${
                   selectedCategory === category
                     ? "bg-primary text-primary-foreground shadow-[var(--shadow-glow)]"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
@@ -138,36 +138,38 @@ const News = () => {
       </header>
 
       {/* News List */}
-      <section className="px-4 py-6">
-        <div className="space-y-4">
+      <section className="px-3 py-4">
+        <div className="space-y-3">
           {filteredNews.map((news) => (
             <Link
               key={news.id}
               to={`/news/${news.id}`}
-              className="block bg-card border border-border rounded-xl overflow-hidden hover:shadow-[var(--shadow-card)] transition-all duration-300 hover:border-primary/30"
+              className="block bg-card border border-border rounded-lg overflow-hidden hover:shadow-[var(--shadow-card)] transition-all duration-300 hover:border-primary/30"
             >
-              <div className="flex gap-3 p-3">
-                <div className="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-lg overflow-hidden">
-                  <img
-                    src={news.image}
-                    alt={news.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="inline-block px-2 py-0.5 text-[10px] font-semibold uppercase bg-primary/10 rounded text-primary">
-                      {news.category}
-                    </span>
-                    <span className="text-xs text-muted-foreground">{news.time}</span>
+              <div className="p-3">
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden">
+                    <img
+                      src={news.image}
+                      alt={news.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-sm md:text-base font-semibold mb-2 line-clamp-2 hover:text-primary transition-colors">
-                    {news.title}
-                  </h3>
-                  <p className="text-xs md:text-sm text-muted-foreground line-clamp-2 mb-2">
-                    {news.excerpt}
-                  </p>
-                  <span className="text-xs text-muted-foreground">Por {news.author}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="inline-block px-2 py-0.5 text-[9px] font-semibold uppercase bg-primary/10 rounded text-primary">
+                        {news.category}
+                      </span>
+                      <span className="text-[10px] text-muted-foreground">{news.time}</span>
+                    </div>
+                    <h3 className="text-sm font-semibold mb-1.5 line-clamp-2 leading-tight hover:text-primary transition-colors">
+                      {news.title}
+                    </h3>
+                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-1.5 leading-snug">
+                      {news.excerpt}
+                    </p>
+                    <span className="text-[10px] text-muted-foreground">Por {news.author}</span>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -177,26 +179,26 @@ const News = () => {
 
       {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border z-50">
-        <div className="flex items-center justify-around py-3 px-2 max-w-md mx-auto">
-          <Link to="/" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+        <div className="flex items-center justify-around py-2.5 px-2 max-w-md mx-auto">
+          <Link to="/" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Home className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Início</span>
+            <span className="text-[9px] font-medium">Início</span>
           </Link>
-          <Link to="/services" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/services" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <TrendingUp className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Serviços</span>
+            <span className="text-[9px] font-medium">Serviços</span>
           </Link>
-          <Link to="/news" className="flex flex-col items-center gap-1 text-primary">
+          <Link to="/news" className="flex flex-col items-center gap-0.5 text-primary active:scale-95">
             <Newspaper className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Notícias</span>
+            <span className="text-[9px] font-medium">Notícias</span>
           </Link>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Video className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Webinars</span>
+            <span className="text-[9px] font-medium">Webinars</span>
           </button>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Menu className="w-5 h-5" />
-            <span className="text-[10px] font-medium">Menu</span>
+            <span className="text-[9px] font-medium">Menu</span>
           </button>
         </div>
       </nav>
