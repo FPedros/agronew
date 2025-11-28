@@ -11,7 +11,7 @@ const NewsDetail = () => {
       category: "Inovação",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200",
       time: "2h atrás",
-      author: "André Pessoa",
+      author: "André Pessôa",
       authorImage: "/images/authors/andre_pessoa.jpg",
       content: `
         <p>A agricultura de precisão está revolucionando o agronegócio brasileiro, com fazendas que adotaram essas tecnologias reportando aumentos de até 40% na produtividade.</p>
@@ -74,7 +74,7 @@ const NewsDetail = () => {
       category: "Inovação",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200",
       time: "2h atrás",
-      author: "André Pessoa",
+      author: "André Pessôa",
       authorImage: "/images/authors/andre_pessoa.jpg",
       content: `
         <p>O Brasil está prestes a colher uma das maiores safras de milho da história, com a segunda safra atingindo impressionantes 123,3 milhões de toneladas, segundo avaliação do Rally da Safra.</p>

@@ -15,7 +15,7 @@ const News = () => {
       excerpt: "Segunda safra de milho atinge 123,3 milhões de toneladas em cenário promissor para o agronegócio brasileiro",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800",
       time: "2h atrás",
-      author: "André Pessoa",
+      author: "André Pessôa",
       authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
@@ -55,7 +55,7 @@ const News = () => {
       excerpt: "Empresa completa 25 anos oferecendo consultoria estratégica e soluções inovadoras para o setor agrícola brasileiro",
       image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800",
       time: "1d atrás",
-      author: "André Pessoa",
+      author: "André Pessôa",
       authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
@@ -95,7 +95,7 @@ const News = () => {
       excerpt: "Depois de semanas em campo, Rally da Safra apresenta análise completa das principais regiões produtoras",
       image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800",
       time: "4d atrás",
-      author: "André Pessoa",
+      author: "André Pessôa",
       authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
