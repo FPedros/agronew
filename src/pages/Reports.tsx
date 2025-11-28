@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FileText, Calendar, User, Lock } from "lucide-react";
+import { FileText, Calendar, User, Lock, Home, TrendingUp, Newspaper, Video, Menu } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { useAuth } from "@/contexts/AuthContext";
@@ -152,30 +152,34 @@ const Reports = () => {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border py-3 px-4 z-50">
-        <div className="max-w-6xl mx-auto flex justify-around">
-          <Link to="/" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-2xl">🏠</span>
-            <span className="text-xs">Início</span>
+      <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-border z-50 shadow-lg">
+        <div className="flex items-center justify-around py-2.5 px-2 max-w-md mx-auto">
+          <Link to="/" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <Home className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Início</span>
           </Link>
-          <Link to="/services" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-2xl">💼</span>
-            <span className="text-xs">Serviços</span>
+          <Link to="/services" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <TrendingUp className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Serviços</span>
           </Link>
-          <Link to="/reports" className="flex flex-col items-center gap-1 text-primary transition-colors">
-            <span className="text-2xl">📊</span>
-            <span className="text-xs">Relatórios</span>
+          <Link to="/reports" className="flex flex-col items-center gap-0.5 text-primary active:scale-95">
+            <FileText className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Relatórios</span>
           </Link>
-          <Link to="/news" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-2xl">📰</span>
-            <span className="text-xs">Notícias</span>
+          <Link to="/news" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <Newspaper className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Notícias</span>
           </Link>
-          <Link to="/webinars" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
-            <span className="text-2xl">🎥</span>
-            <span className="text-xs">Webinars</span>
+          <Link to="/webinars" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <Video className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Webinars</span>
           </Link>
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <Menu className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Menu</span>
+          </button>
         </div>
-      </div>
+      </nav>
 
       <UpgradeModal open={upgradeModalOpen} onOpenChange={setUpgradeModalOpen} />
     </div>

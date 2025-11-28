@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { Home, Play, Clock, Eye, Upload, TrendingUp, FileText, Newspaper, Video } from "lucide-react";
+import { Home, Play, Clock, Eye, Upload, TrendingUp, FileText, Newspaper, Video, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -243,6 +243,10 @@ const Webinars = () => {
             <Video className="w-5 h-5" />
             <span className="text-[9px] font-medium">Webinars</span>
           </Link>
+          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <Menu className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Menu</span>
+          </button>
         </div>
       </nav>
     </div>
