@@ -64,6 +64,7 @@ export default {
           green: "hsl(var(--agro-green))",
           "green-dark": "hsl(var(--agro-green-dark))",
           blue: "hsl(var(--agro-blue))",
+          "blue-light": "hsl(var(--agro-blue-light))",
           earth: "hsl(var(--agro-earth))",
           dark: "hsl(var(--agro-dark))",
           card: "hsl(var(--agro-card))",
