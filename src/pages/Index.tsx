@@ -1,4 +1,21 @@
-import { Home, TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor, Lock } from "lucide-react";
+import {
+  Home,
+  TrendingUp,
+  FileText,
+  Newspaper,
+  Video,
+  Menu,
+  Globe,
+  Package,
+  ShoppingCart,
+  Ruler,
+  MapPin,
+  DollarSign,
+  Award,
+  Database,
+  Monitor,
+  Lock,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -16,12 +33,12 @@ const Index = () => {
 
   // Fetch latest news from database
   const { data: latestNews = [] } = useQuery({
-    queryKey: ['latest-news'],
+    queryKey: ["latest-news"],
     queryFn: async () => {
       const { data, error } = await supabase
-        .from('news')
-        .select('id, title, category, author_name, author_image_url, created_at')
-        .order('created_at', { ascending: false })
+        .from("news")
+        .select("id, title, category, author_name, author_image_url, created_at")
+        .order("created_at", { ascending: false })
         .limit(3);
 
       if (error) throw error;
@@ -136,11 +153,7 @@ const Index = () => {
       {/* Hero Section with User Menu */}
       <section className="relative h-[250px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background z-10" />
-        <img
-          src={heroImage}
-          alt="Agronegócio de precisão"
-          className="w-full h-full object-cover opacity-70"
-        />
+        <img src={heroImage} alt="Agronegócio de precisão" className="w-full h-full object-cover opacity-70" />
         <div className="absolute top-3 right-3 z-30">
           <UserMenu />
         </div>
@@ -148,11 +161,14 @@ const Index = () => {
           <div className="inline-block px-3 py-1 mb-3 text-[10px] font-bold tracking-[0.15em] uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
             Inovação + Agro + Tecnologia
           </div>
-          <h1 className="text-4xl font-bold mb-2 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse" style={{ letterSpacing: '-0.03em' }}>
+          <h1
+            className="text-4xl font-bold mb-2 tracking-tight bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-pulse"
+            style={{ letterSpacing: "-0.03em" }}
+          >
             Agronews
           </h1>
           <p className="text-sm text-muted-foreground max-w-2xl font-normal">
-            Portal completo para o agronegócio moderno
+            Mais que um portal: seu cockpit no agronegócio moderno.
           </p>
         </div>
       </section>
@@ -215,9 +231,7 @@ const Index = () => {
             <div className="w-11 h-11 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform duration-300">
               <TrendingUp className="w-5 h-5 text-white" />
             </div>
-            <h3 className="text-sm font-bold mb-1 text-primary tracking-tight">
-              Ver Todos
-            </h3>
+            <h3 className="text-sm font-bold mb-1 text-primary tracking-tight">Ver Todos</h3>
             <p className="text-[11px] text-muted-foreground leading-relaxed font-normal">+11 serviços disponíveis</p>
           </Link>
         </div>
@@ -229,7 +243,7 @@ const Index = () => {
           <span className="w-1 h-5 bg-primary rounded-full" />
           Relatórios e Análises Técnicas
         </h2>
-        <Link 
+        <Link
           to="/reports"
           className="block bg-gradient-to-br from-primary/10 to-secondary/10 border border-border rounded-lg p-4 hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-[0.98]"
         >
@@ -268,7 +282,7 @@ const Index = () => {
                         {news.category}
                       </span>
                       <span className="text-[10px] text-muted-foreground font-normal">
-                        {new Date(news.created_at).toLocaleDateString('pt-BR')}
+                        {new Date(news.created_at).toLocaleDateString("pt-BR")}
                       </span>
                     </div>
                     <h3 className="text-sm font-bold leading-snug hover:text-primary transition-colors tracking-tight">
@@ -284,7 +298,7 @@ const Index = () => {
             </div>
           )}
         </div>
-        <Link 
+        <Link
           to="/news"
           className="block w-full mt-3 py-2.5 text-xs font-semibold text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-300 active:scale-95 text-center"
         >
@@ -299,19 +313,31 @@ const Index = () => {
             <Home className="w-5 h-5" />
             <span className="text-[9px] font-medium">Início</span>
           </Link>
-          <Link to="/services" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+          <Link
+            to="/services"
+            className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95"
+          >
             <TrendingUp className="w-5 h-5" />
             <span className="text-[9px] font-medium">Serviços</span>
           </Link>
-          <Link to="/reports" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+          <Link
+            to="/reports"
+            className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95"
+          >
             <FileText className="w-5 h-5" />
             <span className="text-[9px] font-medium">Relatórios</span>
           </Link>
-          <Link to="/news" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+          <Link
+            to="/news"
+            className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95"
+          >
             <Newspaper className="w-5 h-5" />
             <span className="text-[9px] font-medium">Notícias</span>
           </Link>
-          <Link to="/webinars" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+          <Link
+            to="/webinars"
+            className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95"
+          >
             <Video className="w-5 h-5" />
             <span className="text-[9px] font-medium">Webinars</span>
           </Link>
