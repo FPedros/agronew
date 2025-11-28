@@ -1,114 +1,29 @@
-import { Home, TrendingUp, Newspaper, Video, Menu, Filter } from "lucide-react";
+import { Home, TrendingUp, Newspaper, Video, Menu, Filter, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { UserMenu } from "@/components/UserMenu";
+import { useHasPremiumAccess } from "@/hooks/useSubscription";
 
 const News = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const hasPremium = useHasPremiumAccess();
 
-  const categories = ["Todas", "Política", "Inovação", "Clima", "GeoPolitica"];
+  const { data: newsData = [] } = useQuery({
+    queryKey: ['news'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('news')
+        .select('*')
+        .order('created_at', { ascending: false });
 
-  const newsData = [
-    {
-      id: 1,
-      title: "Brasil registra safra histórica de milho em meio a desafios",
-      category: "Inovação",
-      excerpt: "Segunda safra de milho atinge 123,3 milhões de toneladas em cenário promissor para o agronegócio brasileiro",
-      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800",
-      time: "2h atrás",
-      author: "André Pessôa",
-      authorImage: "/images/authors/andre_pessoa.jpg",
+      if (error) throw error;
+      return data;
     },
-    {
-      id: 2,
-      title: "Em cenário de incertezas com gripe aviária, Brasil pode colher recorde de milho",
-      category: "Política",
-      excerpt: "Brasil pode colher recorde de 112,9 milhões de toneladas de milho na segunda safra, aponta Agroconsult",
-      image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800",
-      time: "5h atrás",
-      author: "André Debastiani",
-      authorImage: "/images/authors/andre_debastiani.jpg",
-    },
-    {
-      id: 3,
-      title: "Rally da Safra inicia etapa algodão e avalia condições da safra 2024/25",
-      category: "Clima",
-      excerpt: "Equipes percorrem principais polos produtores da Bahia e Mato Grosso para mapear condições e perspectivas da cultura",
-      image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800",
-      time: "8h atrás",
-      author: "Rodrigo Cruz",
-      authorImage: "/images/authors/rodrigo_cruz.jpg",
-    },
-    {
-      id: 4,
-      title: "União Europeia revisa tarifas de importação agrícola",
-      category: "GeoPolitica",
-      excerpt: "Decisão pode impactar exportações brasileiras de commodities e alterar dinâmica comercial global",
-      image: "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800",
-      time: "1d atrás",
-      author: "Heloisa Melo",
-      authorImage: "/images/authors/heloisa_melo.jpg",
-    },
-    {
-      id: 5,
-      title: "25 anos de Agroconsult: excelência e confiança que transformam o agronegócio",
-      category: "Inovação",
-      excerpt: "Empresa completa 25 anos oferecendo consultoria estratégica e soluções inovadoras para o setor agrícola brasileiro",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800",
-      time: "1d atrás",
-      author: "André Pessôa",
-      authorImage: "/images/authors/andre_pessoa.jpg",
-    },
-    {
-      id: 6,
-      title: "Rally no Centro-Oeste: conversas sobre safra, mercado e expectativas",
-      category: "Clima",
-      excerpt: "Equipe percorre Sudoeste de Goiás e Sudeste do Mato Grosso avaliando condições das lavouras e perspectivas de produção",
-      image: "https://images.unsplash.com/photo-1611270629569-8b357cb88996?w=800",
-      time: "2d atrás",
-      author: "André Debastiani",
-      authorImage: "/images/authors/andre_debastiani.jpg",
-    },
-    {
-      id: 7,
-      title: "Nova regulamentação para uso de defensivos agrícolas",
-      category: "Política",
-      excerpt: "Congresso aprova medidas mais rigorosas visando sustentabilidade e segurança alimentar",
-      image: "https://images.unsplash.com/photo-1589923158776-cb4485d99fd6?w=800",
-      time: "3d atrás",
-      author: "Heloisa Melo",
-      authorImage: "/images/authors/heloisa_melo.jpg",
-    },
-    {
-      id: 8,
-      title: "Brasil e China fortalecem parceria comercial agrícola",
-      category: "GeoPolitica",
-      excerpt: "Acordo bilateral visa aumentar exportações de soja, milho e outros produtos do agronegócio brasileiro",
-      image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800",
-      time: "3d atrás",
-      author: "Rodrigo Cruz",
-      authorImage: "/images/authors/rodrigo_cruz.jpg",
-    },
-    {
-      id: 9,
-      title: "Evento de encerramento da Etapa Milho revela resultados da safra 24/25",
-      category: "Inovação",
-      excerpt: "Depois de semanas em campo, Rally da Safra apresenta análise completa das principais regiões produtoras",
-      image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800",
-      time: "4d atrás",
-      author: "André Pessôa",
-      authorImage: "/images/authors/andre_pessoa.jpg",
-    },
-    {
-      id: 10,
-      title: "Mudanças climáticas exigem adaptação do calendário agrícola",
-      category: "Clima",
-      excerpt: "Pesquisadores alertam para necessidade de ajustes no plantio e manejo das culturas",
-      image: "https://images.unsplash.com/photo-1611270629569-8b357cb88996?w=800",
-      time: "5d atrás",
-      author: "Heloisa Melo",
-      authorImage: "/images/authors/heloisa_melo.jpg",
-    },
-  ];
+  });
+
+  const categories = ["Todas", ...Array.from(new Set(newsData.map(n => n.category)))];
 
   const filteredNews = selectedCategory === "Todas" 
     ? newsData 
@@ -118,13 +33,16 @@ const News = () => {
     <div className="min-h-screen bg-background text-foreground pb-20">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-border shadow-sm">
-        <div className="px-3 py-3">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent tracking-tight">
-            Agronews
-          </h1>
-          <p className="text-xs text-muted-foreground mt-0.5 font-normal">
-            Últimas notícias do agronegócio
-          </p>
+        <div className="px-3 py-3 flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent tracking-tight">
+              Agronews
+            </h1>
+            <p className="text-xs text-muted-foreground mt-0.5 font-normal">
+              Últimas notícias do agronegócio
+            </p>
+          </div>
+          <UserMenu />
         </div>
 
         {/* Categories */}
@@ -154,15 +72,21 @@ const News = () => {
             <Link
               key={news.id}
               to={`/news/${news.id}`}
-              className="block bg-card border border-border rounded-lg overflow-hidden hover:shadow-[var(--shadow-card)] transition-all duration-300 hover:border-primary/30"
+              className="block relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-[var(--shadow-card)] transition-all duration-300 hover:border-primary/30"
             >
+              {news.is_premium && !hasPremium && (
+                <div className="absolute top-2 right-2 bg-primary text-primary-foreground px-2 py-1 rounded-full flex items-center gap-1 text-xs font-semibold z-10">
+                  <Lock className="w-3 h-3" />
+                  Premium
+                </div>
+              )}
               <div className="p-3">
                 <div className="flex gap-3">
                   <div className="flex-shrink-0 w-20 h-20 rounded-md overflow-hidden">
                     <img
-                      src={news.image}
+                      src={news.image_url}
                       alt={news.title}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover ${news.is_premium && !hasPremium ? 'opacity-50' : ''}`}
                     />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -170,7 +94,9 @@ const News = () => {
                       <span className="inline-block px-2 py-0.5 text-[9px] font-bold tracking-[0.08em] uppercase bg-primary/10 rounded text-primary">
                         {news.category}
                       </span>
-                      <span className="text-[10px] text-muted-foreground font-normal">{news.time}</span>
+                      <span className="text-[10px] text-muted-foreground font-normal">
+                        {new Date(news.created_at).toLocaleDateString('pt-BR')}
+                      </span>
                     </div>
                     <h3 className="text-sm font-bold mb-1.5 line-clamp-2 leading-tight hover:text-primary transition-colors tracking-tight">
                       {news.title}
@@ -180,11 +106,11 @@ const News = () => {
                     </p>
                     <div className="flex items-center gap-2">
                       <img 
-                        src={news.authorImage} 
-                        alt={news.author}
+                        src={news.author_image_url} 
+                        alt={news.author_name}
                         className="w-5 h-5 rounded-full object-cover"
                       />
-                      <span className="text-[10px] text-muted-foreground font-normal">{news.author}</span>
+                      <span className="text-[10px] text-muted-foreground font-normal">{news.author_name}</span>
                     </div>
                   </div>
                 </div>
