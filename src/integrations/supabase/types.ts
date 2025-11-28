@@ -157,6 +157,54 @@ export type Database = {
           },
         ]
       }
+      webinars: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          duration: number | null
+          id: string
+          is_premium: boolean
+          presenter_image_url: string | null
+          presenter_name: string
+          thumbnail_url: string | null
+          title: string
+          updated_at: string
+          video_url: string | null
+          view_count: number
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          duration?: number | null
+          id?: string
+          is_premium?: boolean
+          presenter_image_url?: string | null
+          presenter_name: string
+          thumbnail_url?: string | null
+          title: string
+          updated_at?: string
+          video_url?: string | null
+          view_count?: number
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          duration?: number | null
+          id?: string
+          is_premium?: boolean
+          presenter_image_url?: string | null
+          presenter_name?: string
+          thumbnail_url?: string | null
+          title?: string
+          updated_at?: string
+          video_url?: string | null
+          view_count?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

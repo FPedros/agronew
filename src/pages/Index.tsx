@@ -283,10 +283,10 @@ const Index = () => {
             <Newspaper className="w-5 h-5" />
             <span className="text-[9px] font-medium">Notícias</span>
           </Link>
-          <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+          <Link to="/webinars" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Video className="w-5 h-5" />
             <span className="text-[9px] font-medium">Webinars</span>
-          </button>
+          </Link>
           <button className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Menu className="w-5 h-5" />
             <span className="text-[9px] font-medium">Menu</span>
