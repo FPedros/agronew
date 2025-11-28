@@ -92,16 +92,19 @@ const Index = () => {
 
   const latestNews = [
     {
+      id: 1,
       title: "Tecnologia de Precisão Aumenta Produtividade em 40%",
       category: "Inovação",
       time: "2h atrás",
     },
     {
+      id: 2,
       title: "Novos Incentivos para Agricultura Sustentável",
       category: "Política",
       time: "5h atrás",
     },
     {
+      id: 3,
       title: "Previsão do Tempo: Chuvas Favoráveis para Próxima Semana",
       category: "Clima",
       time: "8h atrás",
@@ -220,9 +223,10 @@ const Index = () => {
         </h2>
         <div className="space-y-2.5">
           {latestNews.map((news, idx) => (
-            <div
+            <Link
               key={idx}
-              className="bg-card border border-border rounded-lg p-3 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:border-primary/30 active:scale-[0.98]"
+              to={`/news/${news.id}`}
+              className="block bg-card border border-border rounded-lg p-3 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:border-primary/30 active:scale-[0.98]"
             >
               <div className="flex items-start justify-between gap-3">
                 <div className="flex-1">
@@ -237,12 +241,15 @@ const Index = () => {
                   </h3>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
-        <button className="w-full mt-3 py-2.5 text-xs font-semibold text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-300 active:scale-95">
+        <Link 
+          to="/news"
+          className="block w-full mt-3 py-2.5 text-xs font-semibold text-primary border border-primary/30 rounded-lg hover:bg-primary/10 transition-all duration-300 active:scale-95 text-center"
+        >
           Ver Todas as Notícias
-        </button>
+        </Link>
       </section>
 
       {/* Bottom Navigation */}
