@@ -96,7 +96,7 @@ const Index = () => {
       title: "Tecnologia de Precisão Aumenta Produtividade em 40%",
       category: "Inovação",
       time: "2h atrás",
-      author: "André Pessoa",
+      author: "André Pessôa",
       authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
