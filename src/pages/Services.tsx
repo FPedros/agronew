@@ -1,10 +1,13 @@
 import { TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor, Home, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { UserMenu } from "@/components/UserMenu";
 import { useHasPremiumAccess } from "@/hooks/useSubscription";
+import { UpgradeModal } from "@/components/UpgradeModal";
 
 const Services = () => {
   const hasPremium = useHasPremiumAccess();
+  const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
   
   const allServices = [
     {
@@ -126,6 +129,7 @@ const Services = () => {
 
       {/* Services Grid */}
       <section className="px-3 py-4">
+        <UpgradeModal open={upgradeModalOpen} onOpenChange={setUpgradeModalOpen} />
         <div className="grid grid-cols-2 gap-3">
           {allServices.map((service, idx) => {
             const Icon = service.icon;
@@ -135,9 +139,15 @@ const Services = () => {
                 className="group relative bg-card border border-border rounded-lg p-4 hover:shadow-[var(--shadow-card)] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-95"
               >
                 {service.premium && (
-                  <div className="absolute top-2 right-2 bg-primary text-primary-foreground px-2 py-1 rounded-full flex items-center gap-1 text-xs font-semibold z-10">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setUpgradeModalOpen(true);
+                    }}
+                    className="absolute top-2 right-2 bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-2 py-1 rounded-full flex items-center gap-1 text-xs font-semibold z-10 hover:from-yellow-600 hover:to-amber-700 transition-all active:scale-95"
+                  >
                     <Lock className="w-3 h-3" />
-                  </div>
+                  </button>
                 )}
                 <div
                   className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300`}

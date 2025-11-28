@@ -5,9 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { UserMenu } from "@/components/UserMenu";
 import { useHasPremiumAccess } from "@/hooks/useSubscription";
+import { UpgradeModal } from "@/components/UpgradeModal";
 
 const News = () => {
   const [selectedCategory, setSelectedCategory] = useState("Todas");
+  const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
   const hasPremium = useHasPremiumAccess();
 
   const { data: newsData = [] } = useQuery({
@@ -67,6 +69,7 @@ const News = () => {
 
       {/* News List */}
       <section className="px-3 py-4">
+        <UpgradeModal open={upgradeModalOpen} onOpenChange={setUpgradeModalOpen} />
         <div className="space-y-3">
           {filteredNews.map((news) => (
             <Link
@@ -75,10 +78,16 @@ const News = () => {
               className="block relative bg-card border border-border rounded-lg overflow-hidden hover:shadow-[var(--shadow-card)] transition-all duration-300 hover:border-primary/30"
             >
               {news.is_premium && (
-                <div className="absolute top-2 right-2 bg-primary text-primary-foreground px-2 py-1 rounded-full flex items-center gap-1 text-xs font-semibold z-10">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setUpgradeModalOpen(true);
+                  }}
+                  className="absolute top-2 right-2 bg-gradient-to-r from-yellow-500 to-amber-600 text-white px-2 py-1 rounded-full flex items-center gap-1 text-xs font-semibold z-10 hover:from-yellow-600 hover:to-amber-700 transition-all active:scale-95"
+                >
                   <Lock className="w-3 h-3" />
                   Premium
-                </div>
+                </button>
               )}
               <div className="p-3">
                 <div className="flex gap-3">

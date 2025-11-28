@@ -1,13 +1,16 @@
 import { Home, TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import heroImage from "@/assets/hero-agro.jpg";
 import { UserMenu } from "@/components/UserMenu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useHasPremiumAccess } from "@/hooks/useSubscription";
+import { UpgradeModal } from "@/components/UpgradeModal";
 
 const Index = () => {
   const { user } = useAuth();
   const hasPremium = useHasPremiumAccess();
+  const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
   const mainSections = [
     {
       title: "Valoração Rural",
@@ -139,6 +142,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
+      <UpgradeModal open={upgradeModalOpen} onOpenChange={setUpgradeModalOpen} />
       {/* Hero Section with User Menu */}
       <section className="relative h-[250px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background z-10" />
