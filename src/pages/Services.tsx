@@ -94,10 +94,10 @@ const Services = () => {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-lg border-b border-border">
         <div className="px-3 py-3">
-          <h1 className="text-xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent tracking-tight">
             Nossos Serviços
           </h1>
-          <p className="text-xs text-muted-foreground mt-0.5">
+          <p className="text-xs text-muted-foreground mt-0.5 font-normal">
             Soluções completas para o agronegócio
           </p>
         </div>
@@ -118,10 +118,10 @@ const Services = () => {
                 >
                   <Icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-sm font-semibold mb-1.5 group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-bold mb-1.5 group-hover:text-primary transition-colors tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-[11px] text-muted-foreground leading-snug">{service.description}</p>
+                <p className="text-[11px] text-muted-foreground leading-relaxed font-normal">{service.description}</p>
               </div>
             );
           })}
