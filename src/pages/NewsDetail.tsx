@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, User, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, Share2 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
 const NewsDetail = () => {
@@ -11,7 +11,8 @@ const NewsDetail = () => {
       category: "Inovação",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200",
       time: "2h atrás",
-      author: "Redação Agronews",
+      author: "André Pessoa",
+      authorImage: "/images/authors/andre_pessoa.jpg",
       content: `
         <p>A agricultura de precisão está revolucionando o agronegócio brasileiro, com fazendas que adotaram essas tecnologias reportando aumentos de até 40% na produtividade.</p>
         
@@ -31,7 +32,8 @@ const NewsDetail = () => {
       category: "Política",
       image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200",
       time: "5h atrás",
-      author: "Redação Agronews",
+      author: "Heloisa Melo",
+      authorImage: "/images/authors/heloisa_melo.jpg",
       content: `
         <p>O governo federal anunciou um novo programa de crédito verde destinado a pequenos e médios produtores rurais que adotarem práticas sustentáveis.</p>
         
@@ -51,7 +53,8 @@ const NewsDetail = () => {
       category: "Clima",
       image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=1200",
       time: "8h atrás",
-      author: "Redação Agronews",
+      author: "Rodrigo Cruz",
+      authorImage: "/images/authors/rodrigo_cruz.jpg",
       content: `
         <p>Um sistema meteorológico vindo do Pacífico promete trazer chuvas regulares para as principais regiões produtoras do país na próxima semana.</p>
         
@@ -71,7 +74,8 @@ const NewsDetail = () => {
       category: "Inovação",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200",
       time: "2h atrás",
-      author: "Rally da Safra",
+      author: "André Pessoa",
+      authorImage: "/images/authors/andre_pessoa.jpg",
       content: `
         <p>O Brasil está prestes a colher uma das maiores safras de milho da história, com a segunda safra atingindo impressionantes 123,3 milhões de toneladas, segundo avaliação do Rally da Safra.</p>
         
@@ -94,7 +98,8 @@ const NewsDetail = () => {
       category: "Política",
       image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1200",
       time: "5h atrás",
-      author: "Agroconsult",
+      author: "André Debastiani",
+      authorImage: "/images/authors/andre_debastiani.jpg",
       content: `
         <p>Mesmo em um cenário marcado por incertezas relacionadas à gripe aviária, o Brasil está projetado para colher um recorde de 112,9 milhões de toneladas de milho na segunda safra, segundo avaliação da Agroconsult.</p>
         
@@ -117,7 +122,8 @@ const NewsDetail = () => {
       category: "Clima",
       image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=1200",
       time: "8h atrás",
-      author: "Rally da Safra",
+      author: "Rodrigo Cruz",
+      authorImage: "/images/authors/rodrigo_cruz.jpg",
       content: `
         <p>Começou mais uma etapa do Rally da Safra, desta vez focada na cultura do algodão. Equipes especializadas percorrem os principais polos produtores da Bahia e Mato Grosso para mapear condições e perspectivas da safra 2024/25.</p>
         
@@ -175,8 +181,12 @@ const NewsDetail = () => {
               <Calendar className="w-3 h-3" />
               <span>{article.time}</span>
             </div>
-            <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
-              <User className="w-3 h-3" />
+            <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
+              <img 
+                src={article.authorImage} 
+                alt={article.author}
+                className="w-5 h-5 rounded-full object-cover"
+              />
               <span>{article.author}</span>
             </div>
           </div>

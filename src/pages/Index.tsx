@@ -96,18 +96,24 @@ const Index = () => {
       title: "Tecnologia de Precisão Aumenta Produtividade em 40%",
       category: "Inovação",
       time: "2h atrás",
+      author: "André Pessoa",
+      authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
       id: 2,
       title: "Novos Incentivos para Agricultura Sustentável",
       category: "Política",
       time: "5h atrás",
+      author: "Heloisa Melo",
+      authorImage: "/images/authors/heloisa_melo.jpg",
     },
     {
       id: 3,
       title: "Previsão do Tempo: Chuvas Favoráveis para Próxima Semana",
       category: "Clima",
       time: "8h atrás",
+      author: "Rodrigo Cruz",
+      authorImage: "/images/authors/rodrigo_cruz.jpg",
     },
   ];
 
