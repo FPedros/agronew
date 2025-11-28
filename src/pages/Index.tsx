@@ -1,8 +1,13 @@
-import { Home, TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor } from "lucide-react";
+import { Home, TrendingUp, FileText, Newspaper, Video, Menu, Globe, Package, ShoppingCart, Ruler, MapPin, DollarSign, Award, Database, Monitor, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-agro.jpg";
+import { UserMenu } from "@/components/UserMenu";
+import { useAuth } from "@/contexts/AuthContext";
+import { useHasPremiumAccess } from "@/hooks/useSubscription";
 
 const Index = () => {
+  const { user } = useAuth();
+  const hasPremium = useHasPremiumAccess();
   const mainSections = [
     {
       title: "Valoração Rural",
@@ -134,7 +139,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground pb-20">
-      {/* Hero Section */}
+      {/* Hero Section with User Menu */}
       <section className="relative h-[250px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background z-10" />
         <img
@@ -142,6 +147,9 @@ const Index = () => {
           alt="Agronegócio de precisão"
           className="w-full h-full object-cover opacity-70"
         />
+        <div className="absolute top-3 right-3 z-30">
+          <UserMenu />
+        </div>
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-3 text-center">
           <div className="inline-block px-3 py-1 mb-3 text-[10px] font-bold tracking-[0.15em] uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
             Inovação + Agro + Tecnologia

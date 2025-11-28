@@ -1,10 +1,37 @@
-import { ArrowLeft, Calendar, Share2 } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { ArrowLeft, Clock, User, Lock, Calendar, Share2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
+import { useHasPremiumAccess } from "@/hooks/useSubscription";
+import { Button } from "@/components/ui/button";
 
 const NewsDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const hasPremium = useHasPremiumAccess();
 
-  // Mock data - em produção viria de uma API
+  const { data: article } = useQuery({
+    queryKey: ['news', id],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('news')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!id,
+  });
+
+  if (!article) return <div>Notícia não encontrada</div>;
+
+  const shouldShowContent = !article.is_premium || hasPremium;
+
+  // Fallback mock data para desenvolvimento
   const newsData: Record<string, any> = {
     "1": {
       title: "Tecnologia de Precisão Aumenta Produtividade em 40%",
@@ -145,8 +172,6 @@ const NewsDetail = () => {
     },
   };
 
-  const article = newsData[id || "1"] || newsData["1"];
-
   return (
     <div className="min-h-screen bg-background text-foreground pb-16">
       {/* Header */}
@@ -162,12 +187,17 @@ const NewsDetail = () => {
       {/* Article */}
       <article className="max-w-4xl mx-auto">
         {/* Featured Image */}
-        <div className="w-full h-52 overflow-hidden">
+        <div className="w-full h-52 overflow-hidden relative">
           <img
-            src={article.image}
+            src={article.image_url}
             alt={article.title}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${!shouldShowContent ? 'opacity-50' : ''}`}
           />
+          {!shouldShowContent && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+              <Lock className="w-12 h-12 text-white" />
+            </div>
+          )}
         </div>
 
         {/* Content */}
@@ -177,17 +207,23 @@ const NewsDetail = () => {
             <span className="inline-block px-2.5 py-0.5 text-[10px] font-semibold uppercase bg-primary/10 rounded-full text-primary">
               {article.category}
             </span>
+            {article.is_premium && (
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 text-[10px] font-semibold uppercase bg-primary text-primary-foreground rounded-full">
+                <Lock className="w-2.5 h-2.5" />
+                Premium
+              </span>
+            )}
             <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
               <Calendar className="w-3 h-3" />
-              <span>{article.time}</span>
+              <span>{new Date(article.created_at).toLocaleDateString('pt-BR')}</span>
             </div>
             <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
               <img 
-                src={article.authorImage} 
-                alt={article.author}
+                src={article.author_image_url} 
+                alt={article.author_name}
                 className="w-5 h-5 rounded-full object-cover"
               />
-              <span>{article.author}</span>
+              <span>{article.author_name}</span>
             </div>
           </div>
 
@@ -202,11 +238,37 @@ const NewsDetail = () => {
             Compartilhar
           </button>
 
-          {/* Article Content */}
-          <div 
-            className="prose prose-slate max-w-none text-sm leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
+          {/* Article Content or Premium Lock */}
+          {!shouldShowContent ? (
+            <div className="bg-muted/50 rounded-lg p-8 text-center my-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                <Lock className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Conteúdo Premium</h3>
+              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+                {article.excerpt}
+              </p>
+              <p className="text-muted-foreground mb-6">
+                Esta notícia está disponível apenas para assinantes premium.
+              </p>
+              <div className="space-y-3">
+                {!user ? (
+                  <Button onClick={() => navigate('/auth')} size="lg">
+                    Fazer Login
+                  </Button>
+                ) : (
+                  <Button onClick={() => navigate('/')} size="lg">
+                    Assinar Premium
+                  </Button>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div 
+              className="prose prose-slate max-w-none text-sm leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          )}
 
           {/* Tags */}
           <div className="mt-6 pt-4 border-t border-border">
