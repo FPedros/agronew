@@ -15,7 +15,8 @@ const News = () => {
       excerpt: "Segunda safra de milho atinge 123,3 milhões de toneladas em cenário promissor para o agronegócio brasileiro",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800",
       time: "2h atrás",
-      author: "Rally da Safra",
+      author: "André Pessoa",
+      authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
       id: 2,
@@ -24,7 +25,8 @@ const News = () => {
       excerpt: "Brasil pode colher recorde de 112,9 milhões de toneladas de milho na segunda safra, aponta Agroconsult",
       image: "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800",
       time: "5h atrás",
-      author: "Agroconsult",
+      author: "André Debastiani",
+      authorImage: "/images/authors/andre_debastiani.jpg",
     },
     {
       id: 3,
@@ -33,7 +35,8 @@ const News = () => {
       excerpt: "Equipes percorrem principais polos produtores da Bahia e Mato Grosso para mapear condições e perspectivas da cultura",
       image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800",
       time: "8h atrás",
-      author: "Rally da Safra",
+      author: "Rodrigo Cruz",
+      authorImage: "/images/authors/rodrigo_cruz.jpg",
     },
     {
       id: 4,
@@ -42,7 +45,8 @@ const News = () => {
       excerpt: "Decisão pode impactar exportações brasileiras de commodities e alterar dinâmica comercial global",
       image: "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800",
       time: "1d atrás",
-      author: "Análise de Mercado",
+      author: "Heloisa Melo",
+      authorImage: "/images/authors/heloisa_melo.jpg",
     },
     {
       id: 5,
@@ -51,7 +55,8 @@ const News = () => {
       excerpt: "Empresa completa 25 anos oferecendo consultoria estratégica e soluções inovadoras para o setor agrícola brasileiro",
       image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800",
       time: "1d atrás",
-      author: "Agroconsult",
+      author: "André Pessoa",
+      authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
       id: 6,
@@ -60,7 +65,8 @@ const News = () => {
       excerpt: "Equipe percorre Sudoeste de Goiás e Sudeste do Mato Grosso avaliando condições das lavouras e perspectivas de produção",
       image: "https://images.unsplash.com/photo-1611270629569-8b357cb88996?w=800",
       time: "2d atrás",
-      author: "Rally da Safra",
+      author: "André Debastiani",
+      authorImage: "/images/authors/andre_debastiani.jpg",
     },
     {
       id: 7,
@@ -69,7 +75,8 @@ const News = () => {
       excerpt: "Congresso aprova medidas mais rigorosas visando sustentabilidade e segurança alimentar",
       image: "https://images.unsplash.com/photo-1589923158776-cb4485d99fd6?w=800",
       time: "3d atrás",
-      author: "Política Agrícola",
+      author: "Heloisa Melo",
+      authorImage: "/images/authors/heloisa_melo.jpg",
     },
     {
       id: 8,
@@ -78,7 +85,8 @@ const News = () => {
       excerpt: "Acordo bilateral visa aumentar exportações de soja, milho e outros produtos do agronegócio brasileiro",
       image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800",
       time: "3d atrás",
-      author: "Comércio Exterior",
+      author: "Rodrigo Cruz",
+      authorImage: "/images/authors/rodrigo_cruz.jpg",
     },
     {
       id: 9,
@@ -87,7 +95,8 @@ const News = () => {
       excerpt: "Depois de semanas em campo, Rally da Safra apresenta análise completa das principais regiões produtoras",
       image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800",
       time: "4d atrás",
-      author: "Rally da Safra",
+      author: "André Pessoa",
+      authorImage: "/images/authors/andre_pessoa.jpg",
     },
     {
       id: 10,
@@ -96,7 +105,8 @@ const News = () => {
       excerpt: "Pesquisadores alertam para necessidade de ajustes no plantio e manejo das culturas",
       image: "https://images.unsplash.com/photo-1611270629569-8b357cb88996?w=800",
       time: "5d atrás",
-      author: "Pesquisa Agrícola",
+      author: "Heloisa Melo",
+      authorImage: "/images/authors/heloisa_melo.jpg",
     },
   ];
 
@@ -168,7 +178,14 @@ const News = () => {
                     <p className="text-[11px] text-muted-foreground line-clamp-2 mb-1.5 leading-relaxed font-normal">
                       {news.excerpt}
                     </p>
-                    <span className="text-[10px] text-muted-foreground font-normal">Por {news.author}</span>
+                    <div className="flex items-center gap-2">
+                      <img 
+                        src={news.authorImage} 
+                        alt={news.author}
+                        className="w-5 h-5 rounded-full object-cover"
+                      />
+                      <span className="text-[10px] text-muted-foreground font-normal">{news.author}</span>
+                    </div>
                   </div>
                 </div>
               </div>
