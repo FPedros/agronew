@@ -223,6 +223,30 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Reports Section */}
+      <section className="px-3 mb-6">
+        <h2 className="text-xl font-bold mb-3 flex items-center gap-2 tracking-tight">
+          <span className="w-1 h-5 bg-primary rounded-full" />
+          Relatórios e Análises Técnicas
+        </h2>
+        <Link 
+          to="/reports"
+          className="block bg-gradient-to-br from-primary/10 to-secondary/10 border border-border rounded-lg p-4 hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer hover:-translate-y-1 active:scale-[0.98]"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+              <FileText className="w-6 h-6 text-white" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-base font-bold mb-1 tracking-tight">Análises por Cultura</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed font-normal">
+                Soja, Milho, Algodão, Café, Cana e Gerais
+              </p>
+            </div>
+          </div>
+        </Link>
+      </section>
+
       {/* Latest News */}
       <section className="px-3 mb-6">
         <h2 className="text-xl font-bold mb-3 flex items-center gap-2 tracking-tight">
@@ -278,6 +302,10 @@ const Index = () => {
           <Link to="/services" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <TrendingUp className="w-5 h-5" />
             <span className="text-[9px] font-medium">Serviços</span>
+          </Link>
+          <Link to="/reports" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
+            <FileText className="w-5 h-5" />
+            <span className="text-[9px] font-medium">Relatórios</span>
           </Link>
           <Link to="/news" className="flex flex-col items-center gap-0.5 text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <Newspaper className="w-5 h-5" />
