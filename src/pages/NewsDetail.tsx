@@ -144,7 +144,7 @@ const NewsDetail = () => {
   return (
     <div className="min-h-screen bg-background text-foreground pb-16">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-lg border-b border-border">
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-border shadow-sm">
         <div className="px-3 py-3 flex items-center gap-3">
           <Link to="/news" className="text-muted-foreground hover:text-primary transition-colors active:scale-95">
             <ArrowLeft className="w-5 h-5" />
@@ -194,7 +194,7 @@ const NewsDetail = () => {
 
           {/* Article Content */}
           <div 
-            className="prose prose-invert max-w-none text-sm leading-relaxed"
+            className="prose prose-slate max-w-none text-sm leading-relaxed"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 
