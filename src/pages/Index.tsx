@@ -130,11 +130,11 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground pb-20">
       {/* Hero Section */}
       <section className="relative h-[250px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/60 to-background z-10" />
         <img
           src={heroImage}
           alt="Agronegócio de precisão"
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-3 text-center">
           <div className="inline-block px-3 py-1 mb-3 text-[10px] font-bold tracking-[0.15em] uppercase bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full text-primary">
@@ -253,7 +253,7 @@ const Index = () => {
       </section>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-lg border-t border-border z-50">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-border z-50 shadow-lg">
         <div className="flex items-center justify-around py-2.5 px-2 max-w-md mx-auto">
           <Link to="/" className="flex flex-col items-center gap-0.5 text-primary active:scale-95">
             <Home className="w-5 h-5" />
