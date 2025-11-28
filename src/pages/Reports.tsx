@@ -10,6 +10,7 @@ import { ptBR } from "date-fns/locale";
 import { useAuth } from "@/contexts/AuthContext";
 import { useHasPremiumAccess } from "@/hooks/useSubscription";
 import { UpgradeModal } from "@/components/UpgradeModal";
+import { UserMenu } from "@/components/UserMenu";
 
 const categories = [
   { id: "Todos", label: "Todos" },
@@ -56,7 +57,10 @@ const Reports = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20 px-4">
+      <div className="bg-gradient-to-br from-primary/10 via-background to-secondary/10 py-20 px-4 relative">
+        <div className="absolute top-3 right-3 z-30">
+          <UserMenu />
+        </div>
         <div className="max-w-6xl mx-auto text-center">
           <FileText className="w-16 h-16 mx-auto mb-6 text-primary" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
