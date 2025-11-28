@@ -256,10 +256,10 @@ const Index = () => {
             <TrendingUp className="w-5 h-5" />
             <span className="text-[10px] font-medium">Serviços</span>
           </Link>
-          <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/news" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
             <Newspaper className="w-5 h-5" />
             <span className="text-[10px] font-medium">Notícias</span>
-          </button>
+          </Link>
           <button className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
             <Video className="w-5 h-5" />
             <span className="text-[10px] font-medium">Webinars</span>
