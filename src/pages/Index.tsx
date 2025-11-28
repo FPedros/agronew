@@ -178,7 +178,7 @@ const Index = () => {
           Nossos Serviços
         </h2>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
-          {mainSections.map((section, idx) => {
+          {mainSections.slice(0, 5).map((section, idx) => {
             const Icon = section.icon;
             return (
               <div
@@ -197,6 +197,18 @@ const Index = () => {
               </div>
             );
           })}
+          <Link
+            to="/services"
+            className="group bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-dashed border-primary/30 rounded-xl p-4 hover:shadow-[var(--shadow-glow)] transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col items-center justify-center text-center"
+          >
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+              <TrendingUp className="w-6 h-6 text-white" />
+            </div>
+            <h3 className="text-sm font-semibold mb-1 text-primary">
+              Ver Todos
+            </h3>
+            <p className="text-xs text-muted-foreground leading-snug">+9 serviços disponíveis</p>
+          </Link>
         </div>
       </section>
 
