@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import heroImage from "@/assets/hero-agro.jpg";
+import heroImage from "@/assets/banner_agro_brasil.png";
 import { UserMenu } from "@/components/UserMenu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useHasPremiumAccess } from "@/hooks/useSubscription";
